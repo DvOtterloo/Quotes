@@ -1,0 +1,149 @@
+body {
+  background-color: #F5F8FA;
+  font: lighter 24px/150% Roboto, sans-serif;
+  color: #4c4c4c;
+}
+
+.container {
+  width: 600px;
+  margin: auto;
+}
+
+.list , h1.page-not-found{
+  border: 1px solid #E1E8ED;
+  background-color: #fff;
+}
+
+.clear {
+  clear:both;
+}
+
+.list-item {
+  padding:40px;
+  padding-bottom: 20px;
+}
+.list-item:hover {
+  background-color: #f9f9f9;
+}
+
+.list-item + .list-item {
+  border-top: 1px solid #E1E8ED;
+}
+
+.list-item .tags {
+  font-size: 14px;
+  width: 300px;
+  float:right;
+  text-align: right;
+}
+
+.list-item .tags .tag {
+  color: #0084D6;  
+}
+
+.list-item .tags .tag:hover {
+  color: #00A0FF;
+  cursor: pointer;
+}
+
+
+.list-item .person {
+  font-size: 14px;
+  width: 200px;
+  float:left;
+}
+
+h1.page-not-found {
+  font-size:54px; 
+  line-height: 150%;
+  text-align: center;
+  padding: 50px
+}
+
+
+.form label, 
+.form input,
+.form textarea {
+  display: block;
+  font: inherit;
+}
+
+.form input, 
+.form textarea {
+  border: solid 1px #c8c8c8;
+  padding:8px;
+  outline: none;
+  width:450px;
+  margin-bottom: 15px;
+  transition: border 0.2s;
+}
+
+.form label {
+  transition: color 0.2s;
+}
+
+.form input:focus, 
+.form textarea:focus {
+  border: 1px solid #e6e6e6;
+}
+
+.form .has-error input, 
+.form .has-error textarea {
+  border-color:#ee5d50!important;
+}
+
+.form .has-error {
+  color: #ee5d50;     
+}
+
+.form .error-message {
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+.form div {
+  position: relative;
+}
+
+
+.btn {  
+  border-radius: 0!important;
+  border:solid 1px #c8c8c8!important;
+  background-color: white!important;
+  padding: 10px 16px!important;
+  line-height: 24px!important;
+  font-size:16px!important;  
+  transition: background-color 0.2s!important;
+  text-transform: uppercase;
+}
+
+.form .btn {
+  width:470px!important;
+}
+
+
+.btn:hover {
+  background-color: #eee!important;
+  color:#000!important;
+}
+
+.btn:active {
+  background-color: #ddd!important;
+}
+
+.search, .search input {
+  width: 300px;
+  box-sizing:border-box;
+  float:left;
+  margin-bottom:0px;
+}
+
+.add-quote {
+  float:right;  
+}
+
+.header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
