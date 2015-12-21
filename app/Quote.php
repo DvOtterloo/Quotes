@@ -2,12 +2,11 @@
 
 class Quote {
 
-  private $quoteId, $quote, $year, $tags, $person;
+  private $quoteId, $quote, $tags, $person;
 
-  function __construct($quoteId, $quote, $year, $tags, $person) {
+  function __construct($quoteId, $quote, $tags, $person) {
     $this->quoteId = $quoteId;
     $this->quote = $quote;
-    $this->year = $year;
     $this->tags = $tags;
     $this->person = $person;
   }
@@ -21,12 +20,6 @@ class Quote {
   function getQuote() {
     return $this->quote;
   }
-
-
-  function getYear() {
-    return $this->year;
-  }
-
 
   function getTags() {
     return $this->tags;
@@ -54,11 +47,10 @@ class Quote {
     $result = $db->select("SELECT * FROM Quote WHERE QuoteId = :id", array(":id" => $id));
     $result = $result[0];
     $quoteId = $result['QuoteId'];
-    $quote = $result['Quote'];
-    $year = $result['Year'];
+    $quote = $result['Quote'];    
     $person = Person::getPersonById($result['PersonId']);
     $tags = Tag::getTagsByQuoteId($id);
-    return new Quote($quoteId, $quote, $year, $tags, $person);
+    return new Quote($quoteId, $quote, $tags, $person);
   }
 
 
@@ -77,8 +69,12 @@ class Quote {
   }
 
 
-  static function addQuote($quote) {
-    
+  static function addQuote($quote, $tags, $person) {
+    $db = new Database(HOST, DATABASE, USER, PASSWORD);
+    $quoteId = $db->insert("Quote", array("Quote" => $quote, "PersonId" => $person->getPersonId()));
+    foreach($tags as $tag) {
+      $db->insert("QuoteTag", array("QuoteId" => $quoteId, "TagId" => $tag->getTagId()));      
+    }        
   }
 
 

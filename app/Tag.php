@@ -20,8 +20,12 @@ class Tag {
   }
 
 
-  static function getTagById() {
+  static function getTagByName($name) {
     $db = new Database(HOST, DATABASE, USER, PASSWORD);
+    $result = $db->select("SELECT * FROM Tag WHERE `Name` = :name", array(":name" => $name));
+    if (!empty($result)) {
+      return new Tag($result[0]["TagId"], $result[0]["Tag"]);
+    }
   }
 
 
@@ -41,13 +45,28 @@ class Tag {
   }
 
 
-  static function getAllTags() {
+  static function addTag($tag) {
     $db = new Database(HOST, DATABASE, USER, PASSWORD);
+    $tagId = $db->insert('Tag', array("Tag" => $tag));
+    return new Tag($tagId, $tag);
   }
 
 
-  static function addTag($tag) {
-    $db = new Database(HOST, DATABASE, USER, PASSWORD);
+  static function parseTags($tagsInString) {
+    $tags = explode("#", $tagsInString);
+    unset($tags[0]);
+    $listOfTagObjects = array();
+
+    foreach ($tags as $tag) {
+      $tag = ucfirst($tag);
+      $tagObj = self::getTagByName($tag);
+      if (!empty($tagObj)) {        
+        $listOfTagObjects[] = $tagObj;
+      } else {        
+        $listOfTagObjects[] = self::addTag($tag);
+      }
+    }
+    return $listOfTagObjects;
   }
 
 

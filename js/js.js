@@ -6,6 +6,7 @@ $(document).ready(function () {
   $('#AddQuoteModal').on('hidden.bs.modal', function () {
     $('[data-required]').removeClass('has-error');
     $('.error-message').remove();
+    $('#Quote, #Tags, #Person').val("");
   });
 
 });

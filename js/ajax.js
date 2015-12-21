@@ -1,13 +1,13 @@
 $(function () {
   
-  $(".search").keyup(function () {
-    var searchid = $(this).val();
+  $("#Person").keyup(function () {    
+    var searchid = $(this).val();    
     var dataString = 'search=' + searchid;
     if (searchid !== '')
     {
       $.ajax({
         type: "POST",
-        url: "localhost/Quotes/?page=getAllPersons",
+        url: "http://localhost/Quotes/?page=getAllPersons",
         data: dataString,
         cache: false,
         success: function (html)
@@ -19,22 +19,20 @@ $(function () {
     return false;
   });
 
-  jQuery("#result").live("click", function (e) {
+  $("#result").on("click", function (e) {
     var $clicked = $(e.target);
-    var $name = $clicked.find('.name').html();
-    var decoded = $("<div/>").html($name).text();
-    $('#searchid').val(decoded);
+    $("#Person").val($clicked.text());
   });
   
-  jQuery(document).live("click", function (e) {
+  $(document).on("click", function (e) {
     var $clicked = $(e.target);
     if (!$clicked.hasClass("search")) {
-      jQuery("#result").fadeOut();
+      $("#result").fadeOut();
     }
   });
   
   $('#searchid').click(function () {
-    jQuery("#result").fadeIn();
+    $("#Person").fadeIn();
   });
   
 });

@@ -42,7 +42,8 @@ class Database extends PDO {
       $sth->bindValue(":$key", $value);
     }
 
-    $sth->execute();
+    $sth->execute();    
+    return $this->lastInsertId();
   }
 
 

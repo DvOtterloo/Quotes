@@ -147,3 +147,28 @@ h1.page-not-found {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#Person {
+  margin-bottom: 0;
+}
+
+.suggestion-list {
+  border: 1px solid #E1E8ED;
+  margin-bottom: 20px;
+}
+.suggestion-list li {
+  padding:8px;
+}
+
+.suggestion-list li:hover {
+  background-color: #EFEFEF;
+  cursor: pointer;
+}
+
+.suggestion-list li + li {
+  border-top:1px solid #E1E8ED;
+}
+
+.modal-dialog .btn {
+  margin-top:20px;
+}
