@@ -22,7 +22,7 @@ class Tag {
 
   static function getTagByName($name) {
     $db = new Database(HOST, DATABASE, USER, PASSWORD);
-    $result = $db->select("SELECT * FROM Tag WHERE `Name` = :name", array(":name" => $name));
+    $result = $db->select("SELECT * FROM Tag WHERE `Tag` = :name", array(":name" => $name));    
     if (!empty($result)) {
       return new Tag($result[0]["TagId"], $result[0]["Tag"]);
     }

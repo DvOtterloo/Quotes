@@ -16,6 +16,13 @@ $(document).ready(function () {
     $('#RemoveQuoteModal').modal('show');    
     e.preventDefault();
   });
+  
+  $('.search').submit(function(e){    
+    if($('[name=search]', this).val() == ''){
+    e.preventDefault();
+    return false;
+  }
+  });
 
 });
 

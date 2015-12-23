@@ -32,7 +32,7 @@ h1.error{
 .list-item:hover .delete-quote {
   display: inline-block;
 }
-  
+
 .list-item + .list-item {
   border-top: 1px solid #E1E8ED;
 }
@@ -51,7 +51,7 @@ h1.error{
 .list-item .tags .tag:hover {
   color: #00A0FF;
   cursor: pointer;
-  
+
 }
 
 .list-item .person {
@@ -194,4 +194,20 @@ h1.error {
 
 .delete-quote:hover {
   color: #4c4c4c;
+}
+
+
+.header {
+  position: relative;
+}
+.cancel-search{
+  position: absolute;
+  color: #0084D6;
+  text-decoration: none;
+  top: 10px;
+  left: 315px;
+}
+
+.cancel-search:hover {
+  color: #00A0FF;
 }

@@ -50,7 +50,13 @@ class App {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $quote = $_POST['quote'];
       $tags = Tag::parseTags($_POST['tags']);
-      $person = Person::getByName($_POST['person']);
+      if ($_POST['person'] == '') {
+        $name = 'Anonymous';
+      } else {
+        $name = $_POST['person'];
+      }
+      $person = Person::getByName($name);
+
       Quote::addQuote($quote, $tags, $person);
     }
     header("Location: " . URL);
@@ -58,19 +64,21 @@ class App {
 
 
   private function search() {
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search'])) {
       $data = array();
-      $data["quotes"] = Quote::getQuotesearchQuery($_POST['search']);
+      $data['searchQuery'] = $_POST['search'];
+      $data["quotes"] = Quote::getQuotesearchQuery($_POST['search']);      
       $data["seo"]["title"] = "Quotes!";
       $data["seo"]["description"] = "Met behulp van deze website kun je al jouw quotes beheren!";
       $view = new View();
       $view->render("index", $data);
     }
   }
-  
-  private function removeQuote(){
+
+
+  private function removeQuote() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['quoteId'])) {
-      
       Quote::removeQuote($_POST['quoteId']);
     }
     header("Location: " . URL);

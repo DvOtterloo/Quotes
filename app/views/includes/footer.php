@@ -29,7 +29,7 @@
             <label for="Tags">Tags</label>
             <input type="text" id="Tags" name="tags"/>
           </div>
-          <div data-required data-error-message="Wie heeft dit gezegd?">
+          <div>
             <label for="Person">Gemaakt door</label>
             <input type="text" id="Person" name="person"/>
             <div id="result"></div>
