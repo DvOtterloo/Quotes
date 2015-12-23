@@ -9,5 +9,13 @@ $(document).ready(function () {
     $('#Quote, #Tags, #Person').val("");
   });
 
+  $('.delete-quote').on('click', function (e) {    
+    var quoteId = $(this).attr('data-quote-id')
+    console.log(quoteId);
+    $("#QuoteIdField").val(quoteId);
+    $('#RemoveQuoteModal').modal('show');    
+    e.preventDefault();
+  });
+
 });
 

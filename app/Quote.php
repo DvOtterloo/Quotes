@@ -21,6 +21,7 @@ class Quote {
     return $this->quote;
   }
 
+
   function getTags() {
     return $this->tags;
   }
@@ -47,7 +48,7 @@ class Quote {
     $result = $db->select("SELECT * FROM Quote WHERE QuoteId = :id", array(":id" => $id));
     $result = $result[0];
     $quoteId = $result['QuoteId'];
-    $quote = $result['Quote'];    
+    $quote = $result['Quote'];
     $person = Person::getPersonById($result['PersonId']);
     $tags = Tag::getTagsByQuoteId($id);
     return new Quote($quoteId, $quote, $tags, $person);
@@ -72,15 +73,16 @@ class Quote {
   static function addQuote($quote, $tags, $person) {
     $db = new Database(HOST, DATABASE, USER, PASSWORD);
     $quoteId = $db->insert("Quote", array("Quote" => $quote, "PersonId" => $person->getPersonId()));
-    foreach($tags as $tag) {
-      $db->insert("QuoteTag", array("QuoteId" => $quoteId, "TagId" => $tag->getTagId()));      
-    }        
+    foreach ($tags as $tag) {
+      $db->insert("QuoteTag", array("QuoteId" => $quoteId, "TagId" => $tag->getTagId()));
+    }
   }
 
 
-  static function removeQuote($quote) {
-    
+  static function removeQuote($quoteId) {    
+    $db = new Database(HOST, DATABASE, USER, PASSWORD);
+    $db->delete("QuoteTag", "QuoteId = $quoteId", 9999);
+    $db->delete("Quote", "QuoteId = $quoteId", 99999);
   }
-
 
 }
