@@ -85,6 +85,10 @@ h1.error {
   transition: border 0.2s;
 }
 
+.form textarea {
+  resize: none;
+}
+
 .form label {
   transition: color 0.2s;
 }
