@@ -1,12 +1,11 @@
 CREATE TABLE Person (
   PersonId int AUTO_INCREMENT,
-  FirstName VARCHAR(255),
-  LastName VARCHAR(255),
-  PRIMARY KEY(`PersonId`)  
+  Name VARCHAR(255),
+  PRIMARY KEY(`PersonId`)
 );
 
 CREATE TABLE `Tag` (
-  `TagId` int AUTO_INCREMENT, 
+  `TagId` int AUTO_INCREMENT,
   `Tag` VARCHAR(255),
   PRIMARY KEY(`TagId`)
 );
@@ -25,5 +24,5 @@ CREATE TABLE QuoteTag (
   `TagId` int,
   PRIMARY KEY(`QuoteId`, `TagId`),
   FOREIGN KEY (`QuoteId`) REFERENCES `Quote`(`QuoteId`),
-  FOREIGN KEY (`TagId`)   REFERENCES `Tag`(`TagId`)  
+  FOREIGN KEY (`TagId`)   REFERENCES `Tag`(`TagId`)
 );

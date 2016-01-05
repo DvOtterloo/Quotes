@@ -7,16 +7,9 @@ require_once 'app/Quote.php';
 require_once 'app/Tag.php';
 require_once 'app/View.php';
 
-define("URL", "http://localhost/Quotes/");
+require_once 'config.php';
 
-// Database
-define("HOST",      "localhost");
-define("DATABASE",  "Quotes");
-define("USER",      "root");
-define("PASSWORD",  "root");
-
-
- error_reporting(E_ALL);
-  ini_set('display_errors', '1'); 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 $app = new App();
